@@ -4,14 +4,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatChipsModule} from '@angular/material/chips';
 
+import {MatIconModule} from '@angular/material/icon';
 
+//import { MatFileUploadModule } from 'angular-material-fileupload';
 
-//import { LayoutModule } from '@angular/cdk/layout';
-//import { AngularMaterialModule } from '@app/shared/angular-material.module';
-//import { MaterialComponentsModule } from '@angular/core/material-components.module';
-
-
+//import { FormGroup, FormControl } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,10 +29,15 @@ import { FirstComponent } from './first/first.component';
 	MatTabsModule,
 	BrowserAnimationsModule,
 	MatInputModule,
-	MatButtonModule
-	//AngularMaterialModule,
-	//MaterialComponentsModule,
-	//LayoutModule,
+	MatButtonModule,
+	ReactiveFormsModule,
+	MatSliderModule,
+	MatChipsModule,
+	MatIconModule
+	//MatFileUploadModule
+	//FormBuilder
+	//FormGroup,
+	//FormControl
 	
   ],
   providers: [],

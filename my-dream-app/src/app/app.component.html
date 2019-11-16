@@ -1,44 +1,132 @@
 hj
-<mat-tab-group class="maindiv">
+<mat-tab-group class="maindiv"  [selectedIndex]="tabIndex">
   <mat-tab label="First"> 
   <div >
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  
+<form [formGroup]="profileForm">
   <div>
-  <p>para</p>
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
   
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
-  </mat-form-field>
+  <div>
+  <img [src]="url" height="200"> <br/>
+	<input type='file' (change)="onSelectFile($event)">
+  </div>
   
-  
+  <div>
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+    <textarea type="text" placeholder="First Name" formControlName="firstName" required></textarea>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+	<input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+
 </form>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-raised-button color="primary">Primary</button>
+<button mat-raised-button color="primary" type="submit" (click)="nextOfOne()" >Submit</button>
+
+
   </div> </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
-  <mat-tab label="Third"> Content 3 </mat-tab>
+  
+  
+  
+  <mat-tab label="Second"> 
+  <form [formGroup]="profileForm">
+	<div>
+	Availability
+     <mat-chip-list #chipList>
+    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+             [removable]="removable" (removed)="remove(fruit)">
+      {{fruit.name}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New fruit..."
+           [matChipInputFor]="chipList"
+         
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+    <textarea type="text" placeholder="First Name" formControlName="firstName" required></textarea>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  </form>
+  </mat-tab>
+  
+  
+  
+  
+  
+  <mat-tab label="Third"> 
+  <form [formGroup]="profileForm">
+	<div>
+	Availability
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+	Availability
+	     
+      <mat-slider class="example-margin" formControlName="firstName"></mat-slider>
+
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+	Availability
+    <input type="text" placeholder="First Name" formControlName="firstName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+
+    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+	Availability
+     <mat-chip-list #chipList>
+    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+             [removable]="removable" (removed)="remove(fruit)">
+      {{fruit.name}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input placeholder="New fruit..."
+           [matChipInputFor]="chipList"
+         
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </div>
+  <div>
+
+	<input type='file' (change)="onSelectFile($event)">
+  </div>
+  </form>
+  </mat-tab>
 </mat-tab-group>
