@@ -1,76 +1,121 @@
-hj
-<mat-tab-group class="maindiv"  [selectedIndex]="tabIndex">
-  <mat-tab label="First"> 
-  <div >
-<form [formGroup]="profileForm">
-  <div>
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
 
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-  </div>
-  
-  <div>
-  <img [src]="url" height="200"> <br/>
+<mat-tab-group *ngIf="!displayResult" class="maindiv"  [selectedIndex]="tabIndex">
+  <mat-tab label="ABOUT"> 
+  <div >
+  <p *ngIf="errorMsg">{{errorMsg}}</p>
+<form [formGroup]="aboutForm">
+  <div class="padding">
+	  <span class="padding">
+		<input type="text" placeholder="First Name" formControlName="firstName" required>
+		
+		<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+	  </span>
+	  <span class="padding">
+		<input type="text" placeholder="Last Name" formControlName="lastName" required>
+		<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+	  </span>
+	    <div class="image">
+  <img [src]="url" height="200"> 
 	<input type='file' (change)="onSelectFile($event)">
   </div>
+  </div>
   
-  <div>
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
 
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+  
+  <div class="padding">
+  <span class="padding">
+    <input type="phone" placeholder="Phone" formControlName="phone" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+   </span>
+   <span class="padding">
+    <input type="email" placeholder="Email" formControlName="email" required>
+	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  </span>
+  </div>
+  <div class="jobtitle">
+    <input type="text" placeholder="Job Title" formControlName="jobTitle" style="width: 377px;" required>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
-  <div>
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
+  <div class="padding">
+    <textarea type="text" placeholder="Discribe your experience" formControlName="description" class="experience" required></textarea>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
-  <div>
-    <textarea type="text" placeholder="First Name" formControlName="firstName" required></textarea>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-  </div>
-  <div>
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-	<input type="text" placeholder="Last Name" formControlName="lastName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  <div class="padding">
+		  <span class="padding">
+			<input type="text" placeholder="Years of experience" formControlName="experience" required>
+			<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+		  </span>
+		  <span class="padding">
+			<input type="text" placeholder="Website/Portfolio" formControlName="portfolio" required>
+			<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+		  </span>
+		  <span class="padding">
+			<input type="text" placeholder="Where you currently live?" formControlName="liveAt" required>
+			<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+		  </span>
   </div>
 
 </form>
-<button mat-raised-button color="primary" type="submit" (click)="nextOfOne()" >Submit</button>
-
-
+<div class="button">
+	<span class="padding">
+	<button mat-raised-button color="primary" type="submit"  >Previous</button>
+	</span>
+	<span class="padding">
+	<button mat-raised-button color="primary" type="submit" (click)="aboutNext()" >Next</button>
+	</span>
+</div>
   </div> </mat-tab>
   
   
   
-  <mat-tab label="Second"> 
-  <form [formGroup]="profileForm">
-	<div>
-	Availability
+  <mat-tab label="SKILLS" [disabled]="!aboutForm.valid">
+<p *ngIf="errorMsg">{{errorMsg}}</p>  
+  <form [formGroup]="skillsForm">
+  <mat-chip-list>
+  <mat-chip color="primary" selected>Software development</mat-chip>
+  <mat-chip color="primary" selected>Software testing</mat-chip>
+  <mat-chip color="primary" selected>Software design</mat-chip>
+  <mat-chip color="primary" selected>Software design</mat-chip>
+  <mat-chip color="primary" selected>Software design</mat-chip>
+</mat-chip-list>
+ <mat-chip-list>
+  <mat-chip color="primary" selected>Software analysis</mat-chip>
+  <mat-chip color="primary" selected>Software engineering</mat-chip>
+  <mat-chip color="primary" selected>Software engineering</mat-chip>
+  <mat-chip color="primary" selected>Software analysis</mat-chip></mat-chip-list>
+	<div class="padding">
+	<h1 class="addskills">Add Skills</h1>
+	
      <mat-chip-list #chipList>
     <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
              [removable]="removable" (removed)="remove(fruit)">
       {{fruit.name}}
+	 
+
+
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input placeholder="New fruit..."
+    <input placeholder="Type your skill"
            [matChipInputFor]="chipList"
-         
+			formControlName="skills"
            [matChipInputAddOnBlur]="addOnBlur"
            (matChipInputTokenEnd)="add($event)">
   </mat-chip-list>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
-  <div>
-    <textarea type="text" placeholder="First Name" formControlName="firstName" required></textarea>
+  <h1>Professional Certifications</h1>
+  <div class="padding">
+    <textarea type="text" placeholder="Discribe your Professional Certifications" formControlName="certification" class="experience" required></textarea>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
+  <div class="button">
+	  <span class="padding">
+	  <button mat-raised-button color="primary" type="submit" (click)="skillPrevios()" >Previous</button>
+	   </span>
+	   <span class="padding">
+	  <button mat-raised-button color="primary" type="submit" (click)="skillNext()" >Next</button>
+	  </span>
+   </div>	  
   </form>
   </mat-tab>
   
@@ -78,44 +123,49 @@ hj
   
   
   
-  <mat-tab label="Third"> 
-  <form [formGroup]="profileForm">
-	<div>
+  <mat-tab label="AVAILABILITY" [disabled]="!skillsForm.valid"> 
+  <p *ngIf="errorMsg">{{errorMsg}}</p>
+  <form [formGroup]="availForm">
+	<div class="padding">
 	Availability
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+	<span class="avlbty">
+		<span>
+		<input type="text" placeholder="Start date" formControlName="startDate" required>
+		<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+		</span>
+		<span class="padding">
+		<input type="text" placeholder="End date" formControlName="endDate" required>
+		<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+		</span>
+	</span>
   </div>
-  <div>
-	Availability
+  <div class="padding">
+	Salary Expectations
 	     
-      <mat-slider class="example-margin" formControlName="firstName"></mat-slider>
+      <mat-slider class="example-margin" formControlName="salary"></mat-slider>
 
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
+    <input type="text" placeholder="Daily rate" formControlName="dailyRate" required>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
+    <span class="padding">
+    <input type="text" placeholder="Hourly rate" formControlName="hourRate" required>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+    </span>
   </div>
-  <div>
-	Availability
-    <input type="text" placeholder="First Name" formControlName="firstName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
-
-    <input type="text" placeholder="Last Name" formControlName="lastName" required>
-	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
+  <div class="padding">
+	Countries of Interest
+	<span >
+		<input type="text" placeholder="Where you would like to work?" formControlName="countries" required>
+	</span>
   </div>
-  <div>
-	Availability
+  <div class="padding">
+	Prefered Positions
      <mat-chip-list #chipList>
     <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
              [removable]="removable" (removed)="remove(fruit)">
       {{fruit.name}}
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input placeholder="New fruit..."
+    <input placeholder="Soft__"
            [matChipInputFor]="chipList"
          
            [matChipInputAddOnBlur]="addOnBlur"
@@ -123,10 +173,24 @@ hj
   </mat-chip-list>
 	<p *ngIf="!profileForm.controls.firstName.valid && !validFirst" >First Name is required.</p>
   </div>
-  <div>
+  <div class="padding">
 
 	<input type='file' (change)="onSelectFile($event)">
   </div>
+  <div class="button">
+	  <span class="padding">
+	  <button mat-raised-button color="primary" type="submit" (click)="availPrevious()" >Previous</button>
+	   </span>
+	   <span class="padding">
+	  <button mat-raised-button color="primary" type="submit" (click)="availNext()" >Next</button>
+	  </span>
+   </div>	  
   </form>
   </mat-tab>
 </mat-tab-group>
+<div *ngIf="displayResult">
+	<pre *ngIf="displayResult">{{aboutForm.value | json}}</pre>
+<pre *ngIf="displayResult">{{skillsForm.value | json}}</pre>
+<pre *ngIf="displayResult">{{availForm.value | json}}</pre><button mat-raised-button color="primary" type="submit" (click)="homePage()" >Home page</button>
+</div>
+

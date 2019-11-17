@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatChipsModule} from '@angular/material/chips';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import {MatIconModule} from '@angular/material/icon';
 
@@ -33,7 +34,8 @@ import { FirstComponent } from './first/first.component';
 	ReactiveFormsModule,
 	MatSliderModule,
 	MatChipsModule,
-	MatIconModule
+	MatIconModule,
+	AngularFontAwesomeModule
 	//MatFileUploadModule
 	//FormBuilder
 	//FormGroup,

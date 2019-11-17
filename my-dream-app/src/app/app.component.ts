@@ -9,23 +9,87 @@ import {MatChipInputEvent} from '@angular/material';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-})
+})	
 export class AppComponent {
   title = 'my-dream-app';
   tabIndex = 0;
   validFirst = true;
+  errorMsg = '';
+  displayResult = false;
   profileForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
+	phone: new FormControl(''),
+	email: new FormControl(''),
+	jobTitle: new FormControl(''),
+	description: new FormControl(''),
+	experience: new FormControl(''),
+	portfolio: new FormControl(''),
+	liveAt: new FormControl(''),
   });
-  nextOfOne() {
-	  if(this.profileForm.valid){
+  aboutForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+	phone: new FormControl(''),
+	email: new FormControl(''),
+	jobTitle: new FormControl(''),
+	description: new FormControl(''),
+	experience: new FormControl(''),
+	portfolio: new FormControl(''),
+	liveAt: new FormControl(''),
+  });
+  skillsForm = new FormGroup({
+    skills: new FormControl(''),
+    certification: new FormControl(''),
+  });
+  availForm = new FormGroup({
+    startDate: new FormControl(''),
+    endDate: new FormControl(''),
+	salary: new FormControl(''),
+	dailyRate: new FormControl(''),
+	hourRate: new FormControl(''),
+	countries: new FormControl(''),
+  });
+  aboutNext() {
+	  //console.log(this.aboutForm.value)
+	  this.errorMsg = '';
+	  if(this.aboutForm.valid){
 		  this.tabIndex = 1;
 	  }else{
-		  this.validFirst = false;
+		  this.errorMsg = "*All Fields Are Required";
 	  }
-	  
-	  //this.profileForm.lastName.nativeElement.focus()(); 
+	}
+	skillNext() {
+		this.errorMsg = '';
+		if(this.skillsForm.valid){
+		  this.tabIndex = 2;
+		  }else{
+		  this.errorMsg = "*All Fields Are Required";
+		}
+	}
+	skillPrevious() {
+		//if(this.skillsForm.valid){
+		  this.tabIndex = 0;
+		  //}else{
+		  //this.errorMsg = "*All Fields Are Required";
+		//}
+	}
+	availPrevious() {
+		//if(this.skillsForm.valid){
+		  this.tabIndex = 0;
+		  //}else{
+		  //this.errorMsg = "*All Fields Are Required";
+		//}
+	}
+	availNext() {
+		this.errorMsg = '';
+		if(this.availForm.valid){
+		  //this.tabIndex = 2;  
+		  this.displayResult = true;
+
+		  }else{
+		  this.errorMsg = "*All Fields Are Required";
+		}
 	}
 	
 	url: string;
@@ -34,9 +98,16 @@ onSelectFile(event) { // called each time file input changes
       var reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        //this.url = event.target.result;
+	//console.log(reader.readAsDataURL(event.target.files[0]))
+      reader.onload = (event) => {
+		if(event.target){
+			if(event.target.result != ""){
+				//console.log(event.target)
+				this.url = event.target.result;
+			}
+			
+		}		  // called once readAsDataURL is completed
+        
       }
     }
 		
@@ -49,9 +120,11 @@ visible = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   fruits = [
-    {name: 'Lemon'},
-    {name: 'Lime'},
-    {name: 'Apple'},
+    {name: 'Software development'},
+    {name: 'Software testing'},
+    {name: 'Software design'},
+	{name: 'Software analysis'},
+	{name: 'Software engineering'},
   ];
 
   add(event: MatChipInputEvent): void {
@@ -75,6 +148,11 @@ visible = true;
     if (index >= 0) {
       this.fruits.splice(index, 1);
     }
+  }
+  homePage(){this.aboutForm.reset();
+  this.skillsForm.reset();
+  this.availForm.reset();
+	  this.displayResult = false
   }
 }
 

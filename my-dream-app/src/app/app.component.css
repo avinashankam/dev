@@ -10,4 +10,68 @@
 .maindiv {
 	position: absolute;
     left: 39px;
+    margin-left: 255px;
+    margin-top: 30px;
+}
+.mat-tab-label {
+	width: 417px;
+	height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+
+	
+} 
+.first {
+	position: absolute;
+    left: 181px;
+    top: 15px;
+}
+.padding {
+	padding:15px;
+}
+.image {
+	position: absolute;
+    left: 443px;
+    top: 97px;
+}
+.jobtitle {
+	position: inherit;
+    left: -220px;
+    padding: 15px;
+    width: -9px;
+    margin-left: 16px
+}
+.experience {
+	width: 100%;
+    height: 171px;
+}
+.button {
+	position: relative;
+    left: 207px;
+}
+h1 {
+	position: relative;
+    left: 105px;
+}
+.addskills {
+	position: relative;
+    left: 205px;
+}
+.avlbty {
+	position: relative;
+    left: 192px;
+}
+mat-tab-body {
+	    min-width: 593px;
+
+	max-width: 200px;
 }
