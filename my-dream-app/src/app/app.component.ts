@@ -101,10 +101,10 @@ onSelectFile(event) { // called each time file input changes
 	//console.log(reader.readAsDataURL(event.target.files[0]))
       reader.onload = (event) => {
 		if(event.target){
-			if(event.target.result != ""){
+			//if(event.target.result != ""){
 				//console.log(event.target)
-				this.url = event.target.result;
-			}
+				//this.url = event.target.result;
+			//}
 			
 		}		  // called once readAsDataURL is completed
         

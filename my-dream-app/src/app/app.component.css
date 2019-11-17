@@ -70,8 +70,25 @@ h1 {
 	position: relative;
     left: 192px;
 }
-mat-tab-body {
-	    min-width: 593px;
-
-	max-width: 200px;
+h2 {
+	background: cadetblue;
+    height: 19px;
+    padding: 23px;
+    /* margin-left: 0px; */
+    /* text-align: left; */
+    color: white;
 }
+.terms {
+	position: absolute;
+    right: 74px;
+    top: 56px;
+    color: white;
+}
+.portal {
+	position: absolute;
+    left: 133px;
+    top: 43px;
+    font-size: 25px;
+    color: deepskyblue;
+}
+
